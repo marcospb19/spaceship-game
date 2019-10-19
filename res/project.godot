@@ -16,5 +16,5 @@ _global_script_class_icons={
 [application]
 
 config/name="spaceship-game"
-run/main_scene="res://Scenes/Root.tscn"
+run/main_scene="res://Root/Root.tscn"
 config/icon="res://icon.png"

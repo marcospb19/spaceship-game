@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/RedFirepng.png-dd254c0281aa5ecf41999ff62d8f60c6.stex"
+path="res://.import/PurpleFirepng.png-09071866022f9c059b23cecdc1979b87.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/RedFirepng.png"
-dest_files=[ "res://.import/RedFirepng.png-dd254c0281aa5ecf41999ff62d8f60c6.stex" ]
+source_file="res://Spaceship/PurpleFirepng.png"
+dest_files=[ "res://.import/PurpleFirepng.png-09071866022f9c059b23cecdc1979b87.stex" ]
 
 [params]
 
