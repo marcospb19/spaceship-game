@@ -11,23 +11,35 @@ func define_max_value(val):
 	gauge.max_value = val
 
 func set_to_max_value():
-	number.text = str(gauge.max_value)
-	gauge.value = gauge.max_value
+	set_value(gauge.max_value)
 
 func set_gauge_min():
-	number.text = str(gauge.min_value)
-	gauge.value = gauge.min_value
+	set_value(gauge.min_value)
+
+func increase_value(val):
+	set_value(gauge.value + val)
+
+func increase_value_percentually(val):
+	set_value(gauge.value + ((gauge.max_value) * (val/100)))
+
+func decrease_value(val):
+	set_value(gauge.value - val)
+
+func decrease_value_percentually(val):
+	set_value(gauge.value - ((gauge.max_value) * (val/100)))
+
+func reset_value():
+	set_value(0)
+
+func set_number():
+	number.text = str(gauge.value)
 
 func set_value(val):
-	number.text = str(val)
 	gauge.value = val
+	set_number()
 
 func get_value():
 	return gauge.value
-
-func reset_value():
-	number.text = ""
-	gauge.value = 0
 
 func show():
 	visible = true

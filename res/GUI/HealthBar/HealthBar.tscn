@@ -17,10 +17,12 @@ margin_bottom = 40.0
 script = ExtResource( 1 )
 
 [node name="Count" type="MarginContainer" parent="."]
+editor/display_folded = true
 margin_right = 100.0
 margin_bottom = 53.0
 
 [node name="Background" type="NinePatchRect" parent="Count"]
+editor/display_folded = true
 margin_right = 100.0
 margin_bottom = 53.0
 rect_min_size = Vector2( 100, 40 )
