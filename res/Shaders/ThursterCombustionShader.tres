@@ -1,0 +1,28 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[sub_resource type="Shader" id=1]
+code = "// Thruster Combustion Shader
+shader_type canvas_item;
+
+void vertex()
+{
+	vec2 vertex = VERTEX;
+	float time = TIME + 0.111;
+	vertex.x += 0.8  * (abs(0.45 + 0.6 * sin(time*31.1) + 0.4*sin(time*19.2)) - 0.7);
+	vertex.y -= 0.75  * (abs(0.55 + 0.5 * sin(time*21.1) + 0.4*sin(time*13.3)) + 0.7);
+	VERTEX = vertex;
+}
+
+void fragment()
+{
+	float time = TIME + 2.22;
+	vec4 color = texture(TEXTURE , UV);
+	color.r += 0.14 * abs(0.4 + sin(time * 15.0)) - 0.06;
+	color.g += 0.13 * abs(cos(time * 8.3)) - 0.1;
+	color.b -= 0.09 * abs(0.2 + sin(time * 7.1)) + 0.06;
+	COLOR = color;
+}
+"
+
+[resource]
+shader = SubResource( 1 )

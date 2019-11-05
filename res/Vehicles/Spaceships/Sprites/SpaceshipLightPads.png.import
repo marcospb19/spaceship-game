@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/RedFirepng.png-8f815f99ec01c29187ef75b2a708174f.stex"
+path="res://.import/SpaceshipLightPads.png-09e786bbeee88464bac53bc69d7f6da9.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Spaceship/RedFirepng.png"
-dest_files=[ "res://.import/RedFirepng.png-8f815f99ec01c29187ef75b2a708174f.stex" ]
+source_file="res://Vehicles/Spaceships/Sprites/SpaceshipLightPads.png"
+dest_files=[ "res://.import/SpaceshipLightPads.png-09e786bbeee88464bac53bc69d7f6da9.stex" ]
 
 [params]
 
