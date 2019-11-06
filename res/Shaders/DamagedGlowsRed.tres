@@ -7,7 +7,7 @@ shader_type canvas_item;
 void fragment()
 {
 	vec4 color = texture(TEXTURE , UV);
-	color.r += 0.2 + 0.2 * abs(sin(TIME * 6.0));
+	color.r += 0.2 + 0.2 * abs(sin(TIME * 2.0));
 	color.rgb -= 0.3;
 	COLOR = color;
 }

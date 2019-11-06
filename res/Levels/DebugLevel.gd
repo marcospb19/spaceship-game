@@ -16,9 +16,17 @@ const player_resource := preload("res://Player/Player.tscn")
 const enemy_resource := preload("res://Enemy/Enemy.tscn")
 
 onready var players_node := $Players
+onready var enemies_node := $Enemies
 
 func get_players():
 	return players_node.get_children()
+
+func get_quantity_of_players():
+	var quantity = 0
+	for can in can_spawn:
+		if not can:
+			quantity += 1
+	return quantity
 
 func _add_player(player):
 	players_node.add_child(player)
@@ -28,19 +36,21 @@ func _input(event: InputEvent):
 		_spawn_enemy(event.position)
 
 func _spawn_enemy(position: Vector2 , angle := 0.0):
+	var enemy = enemy_resource.instance()
+	enemy.set_starting_position(position , angle)
+	enemies_node.add_child(enemy)
 	print("Enemy Spawned At: " , position)
 
 func _spawn_player(i: int) -> KinematicBody2D:
 	var player = player_resource.instance()
-	
-	player.controls(controls[i] , fire_actions[i] , rotation_inertia[i])
+	player.set_controls(controls[i] , fire_actions[i] , rotation_inertia[i])
+	player.id = i
 	player.set_starting_position(starting_positions[i])
 	can_spawn[i] = false
 	
 	return player
 
 func _process(delta):
-	
 	# If should spawn player [i]
 	for i in range(2):
 		if can_spawn[i] and Input.is_key_pressed(spawn_key[i]):

@@ -1,4 +1,7 @@
 
 
+# var resource = preload("res://Weapon/Missile.tscn")
+var can_shoot = true
+
 func fire():
-	print(self.name , " is firing!")
+	print("Fire in the HOLE!")

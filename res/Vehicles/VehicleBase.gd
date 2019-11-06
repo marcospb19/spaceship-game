@@ -16,4 +16,3 @@ func set_starting_position(position , angle := 0.0):
 	starting_position = position
 	starting_angle    = angle
 	reset_position()
-	

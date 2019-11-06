@@ -9,7 +9,7 @@ void vertex()
 	vec2 vertex = VERTEX;
 	float time = TIME + 0.111;
 	vertex.x += 0.8  * (abs(0.45 + 0.6 * sin(time*31.1) + 0.4*sin(time*19.2)) - 0.7);
-	vertex.y -= 0.75  * (abs(0.55 + 0.5 * sin(time*21.1) + 0.4*sin(time*13.3)) + 0.7);
+	vertex.y -= 0.75 * (abs(0.55 + 0.5 * sin(time*21.1) + 0.4*sin(time*13.3)) + 0.7);
 	VERTEX = vertex;
 }
 

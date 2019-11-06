@@ -1,39 +1,41 @@
 extends "res://Vehicles/Spaceships/SpaceshipBase.gd"
 
-var key_up: int
-var key_left: int
-var key_down: int
-var key_right: int
-var shoot_action: String
-
 onready var weapon := preload("res://Weapons/Weapon.gd").new()
+onready var root   := get_node("../../") # Get the level
 
-func controls(keys: Array , action: String , rotation_inertia := false):
-	key_up    = keys[0]
-	key_left  = keys[1]
-	key_down  = keys[2]
-	key_right = keys[3]
-	is_rotation_inertia_enabled = rotation_inertia
-	shoot_action = action
+var up: bool
+var left: bool
+var down: bool
+var right: bool
 
-func _handle_sprites(up , left , down , right):
-	$Sprites/Thrusters/MainThruster.set_visible(up)
-	$Sprites/Thrusters/ReverseThruster.set_visible(down)
-	$Sprites/Thrusters/LeftRotator.set_visible(right)
-	$Sprites/Thrusters/RightRotator.set_visible(left)
+func _aim_to_position(target_position: Vector2):
+	var normalized_position: Vector2 = (position - target_position).normalized()
+	var angle = atan2(normalized_position.y , normalized_position.x)
+	set_rotation_degrees(rad2deg(angle) - 90)
+
+func _track_nearest_player():
+	var players: Array = root.get_players()
+	if len(players) == 0:
+		return
+	var nearest_player = players[0]
+	
+	if len(players) == 2:
+		if (players[1].position - self.position).length() < (nearest_player.position - self.position).length():
+			nearest_player = players[1]
+	_aim_to_position(nearest_player.position)
 
 func _physics_process(delta):
-	var up    = Input.is_key_pressed(KEY_UP)
-	var left  = Input.is_key_pressed(KEY_LEFT)
-	var down  = Input.is_key_pressed(KEY_DOWN)
-	var right = Input.is_key_pressed(KEY_RIGHT)
+	var up    = false
+	var left  = false
+	var down  = false
+	var right = false
 	
 	_handle_sprites(up , left , down , right)
-	
 	_handle_movement(up , down)
 	_handle_rotation(left , right)
 	
-	if Input.is_action_just_pressed(shoot_action):
+	if false:
 		weapon.fire()
-
+	
+	_track_nearest_player()
 	movement = move_and_slide(movement)

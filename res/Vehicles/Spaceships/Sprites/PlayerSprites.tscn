@@ -20,7 +20,6 @@ texture = ExtResource( 6 )
 [node name="Thrusters" type="Node2D" parent="."]
 
 [node name="MainThruster" type="Sprite" parent="Thrusters"]
-visible = false
 material = ExtResource( 4 )
 texture = ExtResource( 1 )
 

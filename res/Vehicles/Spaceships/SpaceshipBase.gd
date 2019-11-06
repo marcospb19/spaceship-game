@@ -16,7 +16,7 @@ func _handle_movement(up , down):
 		movement.x -= sin(current_angle) * 4
 		movement.y += cos(current_angle) * 4
 
-func _handle_rotation(left , right):
+func _handle_rotation(left: bool , right: bool):
 	if not can_rotate:
 		return
 	if is_rotation_inertia_enabled:
@@ -31,6 +31,12 @@ func _handle_rotation(left , right):
 		if right:
 			self.rotate( deg2rad(2))
 
-# This is great, ok?
+func _handle_sprites(up , left , down , right):
+	$Sprites/Thrusters/MainThruster.set_visible(up)
+	$Sprites/Thrusters/ReverseThruster.set_visible(down)
+	$Sprites/Thrusters/LeftRotator.set_visible(right)
+	$Sprites/Thrusters/RightRotator.set_visible(left)
+
+# This is great, ok? Don't ask why
 func _physics_process(delta):
 	current_angle = deg2rad(get_rotation_degrees())
