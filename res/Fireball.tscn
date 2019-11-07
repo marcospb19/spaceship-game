@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Weapons/Sprites/FireBall.png" type="Texture" id=1]
+[ext_resource path="res://Shaders/DamagedGlowsRed.tres" type="Material" id=2]
+[ext_resource path="res://Fireball.gd" type="Script" id=3]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 9.09651
+
+[node name="Fireball" type="KinematicBody2D"]
+scale = Vector2( 2, 2 )
+script = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+material = ExtResource( 2 )
+texture = ExtResource( 1 )
