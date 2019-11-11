@@ -1,0 +1,44 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Shaders/RedSpaceship.tres" type="Material" id=1]
+[ext_resource path="res://Vehicles/Spaceships/Sprites/Spaceship.png" type="Texture" id=2]
+[ext_resource path="res://Shaders/SpaceshipLightPads.tres" type="Material" id=3]
+[ext_resource path="res://Vehicles/Spaceships/Sprites/SpaceshipLightPads.png" type="Texture" id=4]
+[ext_resource path="res://Shaders/ThursterCombustionShader.tres" type="Material" id=5]
+[ext_resource path="res://Vehicles/Spaceships/Sprites/PurpleFirepng.png" type="Texture" id=6]
+[ext_resource path="res://Vehicles/Spaceships/Sprites/RedFirepng.png" type="Texture" id=7]
+
+[node name="Sprites" type="Node2D"]
+scale = Vector2( 3, 3 )
+
+[node name="ShipSprite" type="Sprite" parent="."]
+material = ExtResource( 1 )
+texture = ExtResource( 2 )
+
+[node name="LightPads" type="Sprite" parent="."]
+material = ExtResource( 3 )
+texture = ExtResource( 4 )
+
+[node name="Thrusters" type="Node2D" parent="."]
+
+[node name="MainThruster" type="Sprite" parent="Thrusters"]
+material = ExtResource( 5 )
+texture = ExtResource( 6 )
+
+[node name="ReverseThruster" type="Sprite" parent="Thrusters"]
+visible = false
+material = ExtResource( 5 )
+position = Vector2( 0, -8.96 )
+texture = ExtResource( 6 )
+flip_v = true
+
+[node name="LeftRotator" type="Sprite" parent="Thrusters"]
+visible = false
+material = ExtResource( 5 )
+texture = ExtResource( 7 )
+
+[node name="RightRotator" type="Sprite" parent="Thrusters"]
+visible = false
+material = ExtResource( 5 )
+texture = ExtResource( 7 )
+flip_h = true
