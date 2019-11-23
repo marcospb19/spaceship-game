@@ -39,6 +39,11 @@ func _spawn_player(i: int) -> KinematicBody2D:
 	return player
 
 func _process(delta):
+	
+	for player in get_players():
+		player.reset_position()
+
+	# What is this?
 	if get_quantity_of_players() == 2:
 		switch_mode_label.visible = true
 	
