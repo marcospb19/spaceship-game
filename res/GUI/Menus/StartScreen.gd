@@ -8,4 +8,4 @@ func is_enter_pressed() -> bool:
 
 func _input(event: InputEvent) -> void:
 	if is_mouse_pressed(event) or is_enter_pressed():
-		get_tree().change_scene('res://GUI/Menus/Main.tscn')
+		get_tree().change_scene('res://GUI/Menus/MainMenu.tscn')

@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://Levels/Campaign/CampaignStart.gd" type="Script" id=1]
+[ext_resource path="res://Levels/Arena/ArenaStart.gd" type="Script" id=1]
 [ext_resource path="res://GUI/Menus/Background.png" type="Texture" id=2]
 [ext_resource path="res://GUI/Menus/ButtonsStyles/button.png" type="Texture" id=3]
 [ext_resource path="res://Misc/PressStart2P.ttf" type="DynamicFontData" id=4]

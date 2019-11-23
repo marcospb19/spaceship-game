@@ -13,8 +13,8 @@ var starting_positions := [Vector2(150 , 175) , Vector2(600 , 175)]
 
 const player_resource  := preload("res://Player/Player.tscn")
 
-onready var players_node := $Background/VBoxContainer/HBoxContainer/Players
-onready var enter_label  := $Background/VBoxContainer/VBoxContainer/EnterLabel
+onready var players_node  := $Background/VBoxContainer/HBoxContainer/Players
+onready var enter_label   := $Background/VBoxContainer/VBoxContainer/EnterLabel
 
 func get_players():
 	return players_node.get_children()
@@ -43,7 +43,7 @@ func _process(delta):
 	for player in get_players():
 		player.reset_position()
 
-	if get_quantity_of_players() > 0:
+	if get_quantity_of_players() == 2:
 		enter_label.visible = true
 		if Input.is_action_just_pressed('KEY_ENTER'):
 			pass
@@ -54,3 +54,13 @@ func _process(delta):
 		if can_spawn[i] and Input.is_action_just_pressed(spawn_key[i]):
 			# Spawn
 			_add_player(_spawn_player(i))
+
+func is_mouse_pressed(event: InputEvent) -> bool:
+	return event is InputEventMouseButton and event.is_pressed()
+
+func is_enter_pressed() -> bool:
+	return Input.is_action_pressed("ui_accept")
+
+func _input(event: InputEvent) -> void:
+	if is_mouse_pressed(event) or is_enter_pressed():
+		get_tree().change_scene('res://GUI/Menus/MainMenu.tscn')

@@ -1,0 +1,99 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Levels/Failure/Failure.gd" type="Script" id=1]
+[ext_resource path="res://GUI/Menus/Background.png" type="Texture" id=2]
+[ext_resource path="res://Misc/PressStart2P.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Misc/skull.png" type="Texture" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 30
+font_data = ExtResource( 3 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "Nova Animação"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("P1Label:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 27.2395 ), Vector2( 0, 40 ), Vector2( 0, 27.24 ) ]
+}
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="NinePatchRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 2 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 25.0
+margin_bottom = 21.0
+custom_constants/separation = 30
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/VBoxContainer"]
+editor/display_folded = true
+margin_left = 137.0
+margin_right = 887.0
+margin_bottom = 350.0
+rect_min_size = Vector2( 0, 350 )
+size_flags_horizontal = 4
+custom_constants/separation = 150
+alignment = 1
+
+[node name="Capsule1" type="NinePatchRect" parent="Background/VBoxContainer/HBoxContainer"]
+editor/display_folded = true
+margin_right = 300.0
+margin_bottom = 350.0
+rect_min_size = Vector2( 300, 100 )
+
+[node name="P1Label" type="Label" parent="Background/VBoxContainer/HBoxContainer/Capsule1"]
+margin_top = 27.24
+margin_right = 360.0
+margin_bottom = 189.24
+custom_fonts/font = SubResource( 1 )
+text = "You lose,
+
+press ENTER 
+
+to continue"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="Background/VBoxContainer/HBoxContainer/Capsule1"]
+margin_left = 94.8434
+margin_top = 237.108
+margin_right = 606.843
+margin_bottom = 749.108
+rect_scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 4 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Background/VBoxContainer/HBoxContainer/Capsule1"]
+autoplay = "Nova Animação"
+"anims/Nova Animação" = SubResource( 2 )
+
+[node name="Capsule2" type="NinePatchRect" parent="Background/VBoxContainer/HBoxContainer"]
+margin_left = 450.0
+margin_right = 750.0
+margin_bottom = 350.0
+rect_min_size = Vector2( 300, 100 )
+
+[node name="Players" type="Node2D" parent="Background/VBoxContainer/HBoxContainer"]
