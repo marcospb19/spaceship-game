@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/FireBall.png-5b98d50b0753da1f947997d643776775.stex"
+path="res://.import/FireBall.png-24e92c52dbba6d437e5d3c8bffb8ecf4.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Weapons/Sprites/FireBall.png"
-dest_files=[ "res://.import/FireBall.png-5b98d50b0753da1f947997d643776775.stex" ]
+source_file="res://Weapons/Projectiles/Sprites/FireBall.png"
+dest_files=[ "res://.import/FireBall.png-24e92c52dbba6d437e5d3c8bffb8ecf4.stex" ]
 
 [params]
 

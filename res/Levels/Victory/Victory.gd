@@ -61,6 +61,6 @@ func is_mouse_pressed(event: InputEvent) -> bool:
 func is_enter_pressed() -> bool:
 	return Input.is_action_pressed("ui_accept")
 
-func _input(event: InputEvent) -> void:
+func _input(event: InputEvent):
 	if is_mouse_pressed(event) or is_enter_pressed():
 		get_tree().change_scene('res://GUI/Menus/MainMenu.tscn')

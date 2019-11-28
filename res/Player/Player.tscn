@@ -1,16 +1,15 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Vehicles/Spaceships/Sprites/PlayerSprites.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Player/PlayerSprites.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Weapons/Weapon.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Player/PlayerSpaceship.gd" type="Script" id=4]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 20.2514
 
 [node name="Player" type="KinematicBody2D"]
+position = Vector2( -2.31645, 4.16959 )
 script = ExtResource( 4 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 visible = false
@@ -18,3 +17,7 @@ scale = Vector2( 3, 3 )
 shape = SubResource( 1 )
 
 [node name="Sprites" parent="." instance=ExtResource( 1 )]
+rotation = 1.5708
+
+[node name="Weapon" parent="." instance=ExtResource( 2 )]
+position = Vector2( 93.6277, 0 )

@@ -1,0 +1,22 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[sub_resource type="Shader" id=1]
+code = "// Red light pads effect
+shader_type canvas_item;
+
+void fragment()
+{
+	float time = TIME * 1.8;
+	vec4 color = texture(TEXTURE , UV);
+	
+	color.rgb = vec3( (color.r + color.g + color.r) / 3.0); // Grayscale effect, antes
+	color.r = 0.65 + 0.4 * abs(sin(time));
+	color.rgb -= 0.15;
+	color.b -= 0.3;
+	color.g -= 0.3;
+	COLOR = color;
+}
+"
+
+[resource]
+shader = SubResource( 1 )

@@ -1,14 +1,14 @@
 [gd_resource type="ShaderMaterial" load_steps=2 format=2]
 
 [sub_resource type="Shader" id=1]
-code = "// Red colored ship
+code = "// Damaged ship effect
 shader_type canvas_item;
 
 void fragment()
 {
 	vec4 color = texture(TEXTURE , UV);
-	color.r  += 0.5;
-	color.gb -= 0.3;
+	color.r += 0.2 + 0.2 * abs(sin(TIME * 4.0));
+	color.rgb -= 0.3;
 	COLOR = color;
 }
 "
