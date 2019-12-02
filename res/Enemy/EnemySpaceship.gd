@@ -42,11 +42,11 @@ func _physics_process(delta):
 	
 	fire_frame_count += 1
 	fire_frame_count = fire_frame_count % 200
-	if fire_frame_count == 0:
-		weapon.fire(get_position() , rad2deg(current_angle) , 200.0)
+	#if fire_frame_count == 0:
+		#weapon.fire(get_position() , rad2deg(current_angle) , Vector2)
 	
 	_handle_sprites(up , left , down , right)
-	_handle_movement(up , down)
+	_handle_movement(up , down , delta)
 	_handle_rotation(left , right)
 	
 	_track_nearest_player()

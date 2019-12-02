@@ -1,25 +1,55 @@
 extends "res://Vehicles/VehicleBase.gd"
 
-const SPEED := 100
+const SPEED := 320
 onready var sprite := $Sprite
 
 func _rotate_sprites():
 	sprite.rotate(deg2rad(5))
 
-func set_projectile_trajectory(position: Vector2 , angle: float , parent_speed: float):
-	var radians = deg2rad(angle)
-	var projectile_speed = max(parent_speed + 50 , SPEED)
-	print("projectile_speed = " , projectile_speed)
-	print("parent_speed = " , parent_speed)
+func set_projectile_trajectory(position: Vector2 , angle: float , parent_movement: Vector2):
 	.set_starting_position(position , angle)
 	reset_position()
-	movement = Vector2(cos(radians) , sin(radians)) * projectile_speed
 
-func _handle_movement(delta: float):
+	var radians = deg2rad(angle)
+	movement = Vector2(cos(radians) , sin(radians))
+	parent_movement = parent_movement.project(movement)
+
+	if parent_movement.sign().x != movement.sign().x:
+		parent_movement.x = 0 
+
+	if parent_movement.sign().y != movement.sign().y:
+		parent_movement.y = 0 
+
+	var projectile_speed = max(parent_movement.length() + 70 , SPEED)
+	movement *= projectile_speed
+
+
+
+
+
+# IMPLEMENTATION OF VIRTUAL FUNCTION
+func check_collisions(collision_object: KinematicCollision2D):
+	if collision_object == null:
+		return
+		
+	var collider = collision_object.collider
+	if not collision_object.has_method("check_collisions"):
+		print("Colidiu com alguém que não esperava-se")
+		return
+	
+	#if collision_object.group == id:
+	#	print("Colisão amiga")
+	#else:
+		#print("Colisão inimiga")
+
+
+
+
 
 
 func _physics_process(delta: float):
 	_rotate_sprites()
-	_handle_movement()
+	_handle_movement(false , false , delta) # Don't accelerate
 	var collision = move_and_collide(movement * delta)
-	print("movement = " , movement)
+	check_collisions(collision)
+
