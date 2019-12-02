@@ -55,12 +55,14 @@ func _spawn_enemy(position: Vector2 , angle := 0.0):
 func _spawn_player(i: int):
 	var player = player_resource.instance()
 	player.set_controls(controls[i] , fire_actions[i] , rotation_inertia[i])
-	player.id = i + 1
+	player.id = i
+	player.group = 1
 	player.set_starting_position(starting_positions[i] , -90)
 	player.get_node("Sprites/LightPads").material = player_light_pads_shaders[i]
 	player.get_node("Sprites/ShipSprite").material = player_paint_shaders[i]
 	can_spawn[i] = false
-	player.get_node("Weapon").projectiles_node = projectiles_node
+	
+	player.get_node("Weapon").setup_weapon(projectiles_node , player.group)
 	players_node.add_child(player)
 
 func _process(delta):

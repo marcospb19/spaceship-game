@@ -2,25 +2,24 @@ extends Node2D
 
 var projectile_resources := preload("res://Weapons/Projectiles/Fireball.tscn")
 var projectiles_node: Node2D
-var firing_interval := 0.3
+var firing_interval := 0.2
 var can_fire := true
+var group
 
 onready var timer = $Timer
 
 func reload_gun():
 	can_fire = true
-	print("Gun reloaded!!")
 
-func setup_weapon(firing_field: Node2D):
+func setup_weapon(firing_field: Node2D , group_: int):
+	group = group_
 	projectiles_node = firing_field
 
 func _ready():
 	timer.set_wait_time(firing_interval)
 
 func fire(position: Vector2 , angle: float , spaceship_speed: Vector2):
-	
 	if not can_fire:
-		print("Can\'t fire")
 		return
 	
 	var radians_angle = deg2rad(angle)
@@ -30,10 +29,8 @@ func fire(position: Vector2 , angle: float , spaceship_speed: Vector2):
 			angle,
 			spaceship_speed
 	)
+	projectile.group = group
 	projectiles_node.add_child(projectile)
 	
-	print("Fire In The Hole!")
 	timer.start()
-
 	can_fire = false
-	print("Also reloading gun here")

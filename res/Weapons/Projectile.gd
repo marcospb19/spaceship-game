@@ -3,6 +3,9 @@ extends "res://Vehicles/VehicleBase.gd"
 const SPEED := 320
 onready var sprite := $Sprite
 
+func _self_destroy():
+	queue_free()
+
 func _rotate_sprites():
 	sprite.rotate(deg2rad(5))
 
@@ -25,26 +28,21 @@ func set_projectile_trajectory(position: Vector2 , angle: float , parent_movemen
 
 
 
-
-
 # IMPLEMENTATION OF VIRTUAL FUNCTION
 func check_collisions(collision_object: KinematicCollision2D):
 	if collision_object == null:
 		return
-		
 	var collider = collision_object.collider
-	if not collision_object.has_method("check_collisions"):
+	
+	if not collider.has_method("check_collisions"):
 		print("Colidiu com alguém que não esperava-se")
 		return
 	
-	#if collision_object.group == id:
-	#	print("Colisão amiga")
-	#else:
-		#print("Colisão inimiga")
-
-
-
-
+	if collider.group == group:
+		print("Colisão amiga")
+	else:
+		print("Colisão inimiga")
+	_self_destroy()
 
 
 func _physics_process(delta: float):
