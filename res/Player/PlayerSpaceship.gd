@@ -6,6 +6,7 @@ var key_down: int
 var key_right: int
 var shoot_action: String
 var id: int
+# warning-ignore:unused_class_variable
 var shoot_delay := 1.1
 
 var weapon = preload("res://Weapons/Weapon.gd").new()
@@ -20,7 +21,7 @@ func set_controls(keys: Array , action: String , rotation_inertia: bool):
 
 func _handle_weapon():
 	if Input.is_action_just_pressed(shoot_action):
-		weapon.fire(get_position() , current_angle , movement.length())
+		weapon.fire(get_position() , current_angle , movement)
 
 func _ready():
 	group = id
@@ -30,7 +31,7 @@ func check_collisions(collision_object: KinematicCollision2D):
 	var collider = collision_object.collider
 	
 	if not collision_object.has_method("check_collisions"):
-		print("Colidiu com alguém que não deveria ter colidido")
+		print("Colidiu com alguém que não esperava-se")
 		return
 	
 	if collision_object.group == id:
@@ -45,6 +46,7 @@ func _physics_process(delta):
 	right = Input.is_key_pressed(key_right)
 	
 	_handle_sprites(up , left , down , right)
-	_handle_movement(up , down , delta)
 	_handle_rotation(left , right)
+# warning-ignore:return_value_discarded
+	_handle_movement(up , down , delta)
 	_handle_weapon()
