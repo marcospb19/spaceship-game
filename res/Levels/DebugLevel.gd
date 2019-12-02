@@ -60,7 +60,7 @@ func _spawn_player(i: int):
 	player.get_node("Sprites/LightPads").material = player_light_pads_shaders[i]
 	player.get_node("Sprites/ShipSprite").material = player_paint_shaders[i]
 	can_spawn[i] = false
-	player.weapon.projectiles_node = projectiles_node
+	player.get_node("Weapon").projectiles_node = projectiles_node
 	players_node.add_child(player)
 
 func _process(delta):

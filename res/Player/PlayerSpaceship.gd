@@ -9,7 +9,7 @@ var id: int
 # warning-ignore:unused_class_variable
 var shoot_delay := 1.1
 
-var weapon = preload("res://Weapons/Weapon.gd").new()
+onready var weapon = $Weapon
 
 func set_controls(keys: Array , action: String , rotation_inertia: bool):
 	key_up    = keys[0]
