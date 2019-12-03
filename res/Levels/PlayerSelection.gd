@@ -55,18 +55,21 @@ func _process(delta):
 		player.reset_position()
 
 	if get_quantity_of_players() > 0:
-		enter_label.visible = true
+		if arena and get_quantity_of_players() > 1:
+			enter_label.visible = true
+		elif campanha:
+			enter_label.visible = true
 		
 		# Aqui troca envia os caras pra nova fase !!!!!
-		if Input.is_action_just_pressed("ui_accept"):
+		if Input.is_action_just_pressed("ui_accept") and enter_label.visible:
 
 			Root.players_quantity = get_quantity_of_players()
 			print("Root.players_quantity = " , Root.players_quantity)
 
-			if campanha == true:
+			if campanha:
 				pass # Começar campanha aqui
 				# Root.change_game_scene("res://Levels...")
-			elif arena == true:
+			elif arena:
 				pass # Começar arena aqui
 				# Root.change_game_scene("res://Levels...")
 
