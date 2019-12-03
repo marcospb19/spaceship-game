@@ -15,7 +15,7 @@ var group: int
 func repel(other: KinematicBody2D , multiplier: float):
 	print("Reppellingnngg")
 	var vector = get_position() - other.get_position()
-	multiplier *= (movement.length() + other.movement.length()) / 200.0
+	multiplier *= (movement.length() + other.movement.length()) / 180.0
 	movement += vector * multiplier
 
 func self_destroy():

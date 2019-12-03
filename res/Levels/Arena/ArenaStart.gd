@@ -8,13 +8,12 @@ var can_spawn        := [true  , true]
 var rotation_inertia := [false , true]
 
 var spawn_key        := ["p1_fire" , "p2_fire"]
-
 var starting_positions := [Vector2(150 , 175) , Vector2(600 , 175)]
 
 const player_resource  := preload("res://Player/Player.tscn")
 
-onready var players_node  := $Background/VBoxContainer/HBoxContainer/Players
-onready var enter_label   := $Background/VBoxContainer/VBoxContainer/EnterLabel
+onready var players_node := $Background/VBoxContainer/HBoxContainer/Players
+onready var enter_label  := $Background/VBoxContainer/VBoxContainer/EnterLabel
 
 func get_players():
 	return players_node.get_children()
@@ -31,9 +30,9 @@ func _add_player(player):
 
 func _spawn_player(i: int) -> KinematicBody2D:
 	var player = player_resource.instance()
-	player.set_controls(controls[i] , spawn_key[i])
+	player.set_controls(controls[i] , "" , false)
 	player.id = i
-	player.set_starting_position(starting_positions[i])
+	player.set_starting_position(starting_positions[i] , -90)
 	can_spawn[i] = false
 	
 	return player
@@ -43,7 +42,7 @@ func _process(delta):
 	for player in get_players():
 		player.reset_position()
 
-	if get_quantity_of_players() == 2:
+	if get_quantity_of_players() > 0:
 		enter_label.visible = true
 		if Input.is_action_just_pressed('KEY_ENTER'):
 			pass

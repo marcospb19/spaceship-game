@@ -75,7 +75,6 @@ anchor_bottom = 1.0
 texture = ExtResource( 2 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect"]
-editor/display_folded = true
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
