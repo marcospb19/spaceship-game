@@ -22,7 +22,7 @@ func _set_current_scene(path):
 	
 func _deferred_goto_scene(path):
 	if current_scene:
-		current_scene.free()
+		current_scene.queue_free()
 	
 	var scene = ResourceLoader.load(path)
 	
