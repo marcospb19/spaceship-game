@@ -32,6 +32,7 @@ func _deferred_goto_scene(path , custom_config := ""):
 		if custom_config == "Campanha":
 			current_scene.campanha = true
 		elif custom_config == "Arena":
+			current_scene.campanha = false
 			current_scene.arena = true
 		
 		# Lidar com números?
