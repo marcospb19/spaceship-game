@@ -19,6 +19,10 @@ config/name="spaceship-game"
 run/main_scene="res://Root/Root.tscn"
 config/icon="res://Misc/icon.png"
 
+[autoload]
+
+Root="*res://Root/Root.gd"
+
 [input]
 
 p1_fire={
