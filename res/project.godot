@@ -16,7 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="spaceship-game"
-run/main_scene="res://Root/Root.tscn"
+run/main_scene="res://GUI/Menus/StartScreen.tscn"
 config/icon="res://Misc/icon.png"
 
 [autoload]
