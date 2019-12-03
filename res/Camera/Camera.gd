@@ -32,8 +32,8 @@ func _handle_camera_zoom(positions: Array):
 	
 	var difference = max_values - min_values
 	var zoom_factor = min_zoom
-	zoom_factor = max(difference.x / 1000, zoom_factor)
-	zoom_factor = max(difference.y / 600 , zoom_factor)
+	zoom_factor = max(difference.x / 1060, zoom_factor)
+	zoom_factor = max(difference.y / 640 , zoom_factor)
 	set_zoom(get_zoom() * (1 - zoom_smoothness) + Vector2(zoom_factor , zoom_factor) * zoom_smoothness)
 
 
