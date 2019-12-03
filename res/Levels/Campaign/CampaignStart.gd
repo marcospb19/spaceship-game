@@ -53,3 +53,4 @@ func _process(delta):
 		if can_spawn[i] and Input.is_action_just_pressed(spawn_key[i]):
 			# Spawn
 			_add_player(_spawn_player(i))
+			Root.players_quantity = get_quantity_of_players()
