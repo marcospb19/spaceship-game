@@ -18,19 +18,19 @@ func setup_weapon(firing_field: Node2D , group_: int):
 func _ready():
 	timer.set_wait_time(firing_interval)
 
-func fire(position: Vector2 , angle: float , spaceship_speed: Vector2):
+func fire(position: Vector2 , angle: float , spaceship_speed: Vector2 , delta: float):
 	if not can_fire:
 		return
 	
 	var radians_angle = deg2rad(angle)
 	var projectile = projectile_resources.instance()
 	projectile.set_projectile_trajectory(
-			position + Vector2(cos(radians_angle) , sin(radians_angle)) * 93,
+			position + Vector2(cos(radians_angle) , sin(radians_angle)) * 100,
 			angle,
 			spaceship_speed
 	)
 	projectile.group = group
 	projectiles_node.add_child(projectile)
-	
+	projectile._handle_movement(false , false , delta)
 	timer.start()
 	can_fire = false

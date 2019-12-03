@@ -20,9 +20,9 @@ func set_controls(keys: Array , action: String , rotation_inertia: bool):
 	is_rotation_inertia_enabled = rotation_inertia
 	shoot_action = action
 
-func _handle_weapon():
+func _handle_weapon(delta: float):
 	if Input.is_action_just_pressed(shoot_action):
-		weapon.fire(get_position() , current_angle , movement)
+		weapon.fire(get_position() , current_angle , movement , delta)
 
 # IMPLEMENTATION OF VIRTUAL FUNCTION
 func check_collisions(collision_object: KinematicCollision2D):
@@ -49,7 +49,7 @@ func _physics_process(delta):
 	
 	_handle_sprites(up , left , down , right)
 	_handle_rotation(left , right)
-	_handle_weapon()
+	_handle_weapon(delta)
 	
 	var collision = _handle_movement(up , down , delta)
 	check_collisions(collision)

@@ -23,7 +23,7 @@ func set_projectile_trajectory(position: Vector2 , angle: float , parent_movemen
 	if parent_movement.sign().y != movement.sign().y:
 		parent_movement.y = 0 
 
-	var projectile_speed = max(parent_movement.length() + 70 , SPEED)
+	var projectile_speed = max(parent_movement.length() + 95 , SPEED)
 	movement *= projectile_speed
 
 
@@ -50,4 +50,3 @@ func _physics_process(delta: float):
 	_handle_movement(false , false , delta) # Don't accelerate
 	var collision = move_and_collide(movement * delta)
 	check_collisions(collision)
-
