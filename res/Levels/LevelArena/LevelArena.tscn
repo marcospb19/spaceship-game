@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Assets/Backgrounds/darkPurple.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Backgrounds/purple.png" type="Texture" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://Assets/Meteors/MediumMeteor2.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Levels/LevelArena/LevelArena.gd" type="Script" id=14]
 [ext_resource path="res://Camera/GeneralLevelCamera.tscn" type="PackedScene" id=15]
+[ext_resource path="res://GUI/HealthBar/HealthBar.tscn" type="PackedScene" id=16]
 
 [sub_resource type="TileSet" id=1]
 0/name = "purple.png 0"
@@ -338,3 +339,27 @@ position = Vector2( 4681.94, 3936.6 )
 [node name="Players" type="Node2D" parent="."]
 
 [node name="Camera2D" parent="." instance=ExtResource( 15 )]
+
+[node name="Control" type="Control" parent="."]
+margin_right = 1025.0
+margin_bottom = 600.0
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="HealthBar1" parent="Control" instance=ExtResource( 16 )]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -53.0
+margin_right = 500.0
+margin_bottom = 0.0
+
+[node name="HealthBar2" parent="Control" instance=ExtResource( 16 )]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -500.0
+margin_top = -53.0
+margin_right = 0.0
+margin_bottom = 0.0

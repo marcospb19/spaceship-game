@@ -26,8 +26,6 @@ func set_projectile_trajectory(position: Vector2 , angle: float , parent_movemen
 	var projectile_speed = max(parent_movement.length() + 95 , SPEED)
 	movement *= projectile_speed
 
-
-
 # IMPLEMENTATION OF VIRTUAL FUNCTION
 func check_collisions(collision_object: KinematicCollision2D):
 	if collision_object == null:
@@ -38,6 +36,10 @@ func check_collisions(collision_object: KinematicCollision2D):
 		print("Colidiu com alguém que não esperava-se")
 		return
 	
+	if collider.has_method("set_controls"):
+		collider.HP -= 20
+		collider.check_collisions(collision_object)
+		
 	if collider.group == group:
 		print("Colisão amiga")
 	else:

@@ -40,7 +40,6 @@ func _ready():
 	for i in range(2):
 		_spawn_player(i)
 
-
 func _spawn_player(i: int):
 	var player = player_resource.instance()
 	player.set_controls(controls[i] , fire_actions[i] , rotation_inertia[i])
@@ -54,7 +53,15 @@ func _spawn_player(i: int):
 	player.get_node("Weapon").setup_weapon(projectiles_node , player.group)
 	players_node.add_child(player)
 
+onready var health_bars := [get_node("Control/HealthBar1") , get_node("Control/HealthBar2")]
 func _process(delta):
+	for player in get_players():
+		health_bars[player.id].set_value(player.HP)
+	
+		if player.HP == 0:
+			Root.who_won = player.id
+			Root.change_game_scene("res://Levels/Victory/Victory.tscn")
+		
 	if Input.is_key_pressed(KEY_R):
 		for player in get_players():
 			player.reset_position()

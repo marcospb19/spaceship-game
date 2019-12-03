@@ -6,7 +6,6 @@ onready var gauge  = $Gauge
 func _ready():
 	gauge.max_value = 100
 
-
 func reset():
 	hide()
 	set_empty()

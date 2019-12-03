@@ -3,6 +3,8 @@ extends Node2D
 var winner_player = null
 var current_scene: Node = null
 var should_spawn_players := [false , false]
+var who_won: int
+
 
 func _ready():
 	# Current Scene começa com é o StartScreen, que é a cena default

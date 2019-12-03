@@ -11,7 +11,6 @@ var id: int # Number of the player
 
 onready var weapon = $Weapon
 
-
 func set_controls(keys: Array , action: String , rotation_inertia: bool):
 	key_up    = keys[0]
 	key_left  = keys[1]
@@ -24,6 +23,9 @@ func _handle_weapon(delta: float):
 	if Input.is_action_just_pressed(shoot_action):
 		weapon.fire(get_position() , current_angle , movement , delta)
 
+var HP = 100
+onready var barra_de_hp = null
+
 # IMPLEMENTATION OF VIRTUAL FUNCTION
 func check_collisions(collision_object: KinematicCollision2D):
 	if collision_object == null:
@@ -31,15 +33,15 @@ func check_collisions(collision_object: KinematicCollision2D):
 	var collider = collision_object.collider
 	
 	if not collider.has_method("check_collisions"):
-		repel(collider , 0.9)
-		return
+		repel(collider , 1)
+
 	elif group == collider.group:
-		repel(collider , 0.9)
-		collider.repel(self , 0.9)
-		print("Colisão amiga")
+		repel(collider , 0.7)
+		collider.repel(self , 0.7)
 	else:
-		print("Colisão inimiga")
-		print("Decrease HP")
+		collider.repel(self , 1.1)
+		self.repel(collider , 1.1)
+		HP -= 20
 
 func _physics_process(delta):
 	up    = Input.is_key_pressed(key_up)
