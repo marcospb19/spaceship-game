@@ -1,8 +1,8 @@
 extends Node2D
 
-var players_quantity = 0
 var winner_player = null
 var current_scene: Node = null
+var should_spawn_players := [false , false]
 
 func _ready():
 	# Current Scene começa com é o StartScreen, que é a cena default
@@ -35,12 +35,7 @@ func _deferred_goto_scene(path , custom_config := ""):
 			current_scene.campanha = false
 			current_scene.arena = true
 		
-		# Lidar com números?
-		# elif is_valid_integer(custom_config):
-			# Se for a quantidade de players passada
-			#if 1 <= int(custom_config) and int(custom_config) <= 2:
-	
 		print(current_scene.campanha == true)
-
+	
 	print("---------------------   New tree   ---------------------")
 	get_tree().get_root().print_tree_pretty()

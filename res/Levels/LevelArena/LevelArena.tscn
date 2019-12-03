@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Assets/Backgrounds/darkPurple.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Backgrounds/purple.png" type="Texture" id=2]
@@ -13,6 +13,8 @@
 [ext_resource path="res://Assets/Meteors/SmallMeteor2.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Assets/Meteors/SmallMeteor1.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Assets/Meteors/MediumMeteor2.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Levels/LevelArena/LevelArena.gd" type="Script" id=14]
+[ext_resource path="res://Camera/GeneralLevelCamera.tscn" type="PackedScene" id=15]
 
 [sub_resource type="TileSet" id=1]
 0/name = "purple.png 0"
@@ -56,7 +58,8 @@
 3/shapes = [  ]
 3/z_index = 0
 
-[node name="World" type="Node2D"]
+[node name="LevelArena" type="Node2D"]
+script = ExtResource( 14 )
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource( 1 )
@@ -303,29 +306,35 @@ position = Vector2( 9153.42, 9471.68 )
 [node name="Area2D68" parent="Objects" instance=ExtResource( 7 )]
 position = Vector2( 6734.82, 6605.43 )
 
-[node name="Area2D" parent="." instance=ExtResource( 6 )]
+[node name="Area2D69" parent="Objects" instance=ExtResource( 6 )]
 position = Vector2( 10282.1, 5369.21 )
 
-[node name="Area2D2" parent="." instance=ExtResource( 13 )]
+[node name="Area2D70" parent="Objects" instance=ExtResource( 13 )]
 position = Vector2( 9348.77, 5651.39 )
 
-[node name="Area2D3" parent="." instance=ExtResource( 6 )]
+[node name="Area2D71" parent="Objects" instance=ExtResource( 6 )]
 position = Vector2( 9110, 6259.16 )
 
-[node name="Area2D4" parent="." instance=ExtResource( 13 )]
+[node name="Area2D72" parent="Objects" instance=ExtResource( 13 )]
 position = Vector2( 9565.83, 6910.35 )
 
-[node name="Area2D5" parent="." instance=ExtResource( 13 )]
+[node name="Area2D73" parent="Objects" instance=ExtResource( 13 )]
 position = Vector2( 10542.6, 7257.65 )
 
-[node name="Area2D6" parent="." instance=ExtResource( 6 )]
+[node name="Area2D74" parent="Objects" instance=ExtResource( 6 )]
 position = Vector2( 11258.9, 6910.35 )
 
-[node name="Area2D7" parent="." instance=ExtResource( 13 )]
+[node name="Area2D75" parent="Objects" instance=ExtResource( 13 )]
 position = Vector2( 10998.4, 5933.57 )
 
-[node name="Area2D8" parent="." instance=ExtResource( 6 )]
+[node name="Area2D76" parent="Objects" instance=ExtResource( 6 )]
 position = Vector2( 11324, 6389.4 )
 
-[node name="Area2D9" parent="." instance=ExtResource( 11 )]
+[node name="Area2D77" parent="Objects" instance=ExtResource( 11 )]
 position = Vector2( 4681.94, 3936.6 )
+
+[node name="Projectiles" type="Node2D" parent="."]
+
+[node name="Players" type="Node2D" parent="."]
+
+[node name="Camera2D" parent="." instance=ExtResource( 15 )]

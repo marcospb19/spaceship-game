@@ -31,7 +31,7 @@ func check_collisions(collision_object: KinematicCollision2D):
 	var collider = collision_object.collider
 	
 	if not collider.has_method("check_collisions"):
-		print("Colidiu com alguém que não esperava-se")
+		repel(collider , 0.9)
 		return
 	elif group == collider.group:
 		repel(collider , 0.9)

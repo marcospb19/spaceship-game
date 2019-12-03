@@ -12,10 +12,13 @@ var can_rotate := true
 
 var group: int
 
-func repel(other: KinematicBody2D , multiplier: float):
+func repel(other , multiplier: float):
 	print("Reppellingnngg")
 	var vector = get_position() - other.get_position()
-	multiplier *= (movement.length() + other.movement.length()) / 180.0
+	
+	if other.has_method("_handle_movement"):
+		multiplier *= (movement.length() + other.movement.length()) / 180.0
+		
 	movement += vector * multiplier
 
 func self_destroy():
@@ -35,8 +38,8 @@ func set_starting_position(position: Vector2 , angle: float):
 func _handle_movement(up , down , delta: float) -> KinematicCollision2D:
 	if can_move:
 		if up:
-			movement.x += cos(radians_angle) * 7.5
-			movement.y += sin(radians_angle) * 7.5
+			movement.x += cos(radians_angle) * 8
+			movement.y += sin(radians_angle) * 8
 		if down:
 			movement.x -= cos(radians_angle) * 4
 			movement.y -= sin(radians_angle) * 4

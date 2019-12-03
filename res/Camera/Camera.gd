@@ -43,8 +43,9 @@ func _physics_process(delta: float) -> void:
 		player_pos.append(player.get_position())
 		
 	var enemy_pos = []
-	for enemy in get_parent().get_enemies():
-		enemy_pos.append(enemy.get_position())
+	if get_parent().has_method("get_enemies"):
+		for enemy in get_parent().get_enemies():
+			enemy_pos.append(enemy.get_position())
 
 	_handle_camera_position(player_pos)
 	_handle_camera_zoom(player_pos + enemy_pos)
