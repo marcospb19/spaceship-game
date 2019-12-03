@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Assets/Meteors/meteorBrown_big3.png" type="Texture" id=1]
+
+[sub_resource type="ConvexPolygonShape2D" id=1]
+points = PoolVector2Array( -220, -270, 150, -270, 330, -10, 220, 210, -140, 270, -330, 60 )
+
+[node name="Area2D" type="Area2D"]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 6.59496, 6.59496 )
+texture = ExtResource( 1 )
