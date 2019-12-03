@@ -3,6 +3,9 @@ extends Node2D
 var players_quantity = 0
 var current_scene = null
 
+func _ready():
+	_set_current_scene("res://GUI/Menus/StartScreen.tscn")
+
 func _process(delta):
 	# Exit the game with ESC
 	if Input.is_key_pressed(KEY_ESCAPE):
@@ -18,7 +21,8 @@ func _set_current_scene(path):
 	call_deferred("_deferred_goto_scene", path)
 	
 func _deferred_goto_scene(path):
-	current_scene.free()
+	if current_scene:
+		current_scene.free()
 	
 	var scene = ResourceLoader.load(path)
 	
