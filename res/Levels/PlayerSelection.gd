@@ -12,6 +12,15 @@ var starting_positions := [Vector2(150 , 175) , Vector2(600 , 175)]
 
 const player_resource  := preload("res://Player/Player.tscn")
 
+const player_paint_shaders := [
+	preload("res://Shaders/Players/Player1SpaceshipPaint.tres"),
+	preload("res://Shaders/Players/Player2SpaceshipPaint.tres")
+]
+const player_light_pads_shaders := [
+	preload("res://Shaders/Players/Player1SpaceshipLightPads.tres"),
+	preload("res://Shaders/Players/Player2SpaceshipLightPads.tres")
+]
+
 onready var players_node := $Background/VBoxContainer/HBoxContainer/Players
 onready var enter_label  := $Background/VBoxContainer/VBoxContainer/EnterLabel
 
@@ -25,17 +34,20 @@ func get_quantity_of_players():
 			quantity += 1
 	return quantity
 
-func _add_player(player):
-	players_node.add_child(player)
-
-func _spawn_player(i: int) -> KinematicBody2D:
+func _spawn_player(i: int):
 	var player = player_resource.instance()
 	player.set_controls(controls[i] , "" , false)
 	player.id = i
+	player.group = 1
 	player.set_starting_position(starting_positions[i] , -90)
+	player.get_node("Sprites/LightPads").material = player_light_pads_shaders[i]
+	player.get_node("Sprites/ShipSprite").material = player_paint_shaders[i]
 	can_spawn[i] = false
-	
-	return player
+	players_node.add_child(player)
+
+
+var campanha := false
+var arena    := false
 
 func _process(delta):
 	
@@ -44,13 +56,25 @@ func _process(delta):
 
 	if get_quantity_of_players() > 0:
 		enter_label.visible = true
-		if Input.is_action_just_pressed('KEY_ENTER'):
-			pass
-			# Aqui troca envia os caras pra nova fase @jaum
-	
+		
+		# Aqui troca envia os caras pra nova fase !!!!!
+		if Input.is_action_just_pressed("ui_accept"):
+
+			Root.players_quantity = get_quantity_of_players()
+			print("Root.players_quantity = " , Root.players_quantity)
+
+			if campanha == true:
+				pass # Começar campanha aqui
+				# Root.change_game_scene("res://Levels...")
+			elif arena == true:
+				pass # Começar arena aqui
+				# Root.change_game_scene("res://Levels...")
+
+	else:
+		enter_label.visible = false
+
 	# If should spawn player [i]
 	for i in range(2):
 		if can_spawn[i] and Input.is_action_just_pressed(spawn_key[i]):
 			# Spawn
-			_add_player(_spawn_player(i))
-			Root.players_quantity = get_quantity_of_players()
+			_spawn_player(i)

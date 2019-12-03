@@ -1,7 +1,7 @@
 extends Control
 
 func _on_Button1_pressed():
-	Root._set_current_scene("res://Levels/Arena/ArenaStart.tscn")
+	Root.change_game_scene("res://Levels/PlayerSelection.tscn" , "Campanha")
 
 func _on_Button2_pressed():
-	Root._set_current_scene('res://Levels/Arena/ArenaStart.tscn')
+	Root.change_game_scene("res://Levels/PlayerSelection.tscn" , "Arena")

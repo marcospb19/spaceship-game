@@ -1,25 +1,25 @@
 [gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://Levels/Arena/ArenaStart.gd" type="Script" id=1]
+[ext_resource path="res://Levels/Backup/CampaignStart.gd" type="Script" id=1]
 [ext_resource path="res://GUI/Menus/Background.png" type="Texture" id=2]
-[ext_resource path="res://GUI/Menus/ButtonsStyles/button.png" type="Texture" id=3]
-[ext_resource path="res://Misc/PressStart2P.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://Misc/PressStart2P.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://GUI/Menus/ButtonsStyles/button.png" type="Texture" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 30
-font_data = ExtResource( 4 )
+font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 14
-font_data = ExtResource( 4 )
+font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=3]
 size = 20
-font_data = ExtResource( 4 )
+font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=4]
 size = 26
-font_data = ExtResource( 4 )
+font_data = ExtResource( 3 )
 
 [sub_resource type="Animation" id=5]
 length = 2.0
@@ -94,7 +94,7 @@ alignment = 1
 margin_right = 300.0
 margin_bottom = 350.0
 rect_min_size = Vector2( 300, 100 )
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 
 [node name="P1Label" type="Label" parent="Background/VBoxContainer/HBoxContainer/Capsule1"]
 margin_top = 27.2395
@@ -123,7 +123,7 @@ margin_left = 450.0
 margin_right = 750.0
 margin_bottom = 350.0
 rect_min_size = Vector2( 300, 100 )
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 
 [node name="P2Label" type="Label" parent="Background/VBoxContainer/HBoxContainer/Capsule2"]
 margin_left = 0.61499
