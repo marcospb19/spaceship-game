@@ -9,8 +9,8 @@ var who_won: int
 func _ready():
 	# Current Scene começa com é o StartScreen, que é a cena default
 	current_scene = get_tree().get_root().get_child(1)
-	print("--------------------   Start tree   --------------------")
-	get_tree().get_root().print_tree_pretty()
+	# print("--------------------   Start tree   --------------------")
+	# get_tree().get_root().print_tree_pretty()
 
 func _process(delta):
 	# Exit the game with ESC
@@ -36,8 +36,6 @@ func _deferred_goto_scene(path , custom_config := ""):
 		elif custom_config == "Arena":
 			current_scene.campanha = false
 			current_scene.arena = true
-		
-		print(current_scene.campanha == true)
 	
-	print("---------------------   New tree   ---------------------")
-	get_tree().get_root().print_tree_pretty()
+	# print("---------------------   New tree   ---------------------")
+	# get_tree().get_root().print_tree_pretty()

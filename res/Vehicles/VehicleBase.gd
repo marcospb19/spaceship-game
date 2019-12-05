@@ -14,10 +14,10 @@ var group: int
 
 func repel(other , multiplier: float):
 	print("Reppellingnngg")
-	var vector = get_position() - other.get_position()
+	var vector = (get_position() - other.get_position()).normalized() * 50
 	
 	if other.has_method("_handle_movement"):
-		multiplier *= (movement.length() + other.movement.length()) / 180.0
+		multiplier *= (movement.length() + other.movement.length()) / 100.0
 		
 	movement += vector * multiplier
 

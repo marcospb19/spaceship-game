@@ -37,8 +37,10 @@ func get_quantity_of_players():
 	return quantity
 
 func _ready():
+	print("LevelArena.gd")
 	for i in range(2):
 		_spawn_player(i)
+	$Camera2D.first_camera_setup(get_players())
 
 func _spawn_player(i: int):
 	var player = player_resource.instance()
@@ -54,6 +56,7 @@ func _spawn_player(i: int):
 	players_node.add_child(player)
 
 onready var health_bars := [get_node("Control/HealthBar1") , get_node("Control/HealthBar2")]
+
 func _process(delta):
 	for player in get_players():
 		health_bars[player.id].set_value(player.HP)

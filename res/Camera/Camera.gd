@@ -36,6 +36,14 @@ func _handle_camera_zoom(positions: Array):
 	zoom_factor = max(difference.y / 600 , zoom_factor)
 	set_zoom(get_zoom() * (1 - zoom_smoothness) + Vector2(zoom_factor , zoom_factor) * zoom_smoothness)
 
+func first_camera_setup(players):
+	print("Camera.gd")
+
+	var pos = Vector2(0 , 0)
+	for player in players:
+		pos += player.get_position()
+	pos /= len(players)
+	set_position(pos)
 
 func _physics_process(delta: float) -> void:
 	var player_pos = []
